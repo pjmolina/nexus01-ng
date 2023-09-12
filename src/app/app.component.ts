@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './user-profile/user-profile.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'nexus-ng01';
+  title = 'Nexus';
+
+  onUserSelect(u: User) {
+    console.log('Usuario seleccionado:' + u.nombre);
+  }
 }
