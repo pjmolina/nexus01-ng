@@ -6,12 +6,14 @@
 <main>
   <p>Bienvenido:</p>
 
-  <app-user-profile
-    nombre="Ana" apellido="Perez" rol="administrador"
+  <app-user-profile *ngFor="let p of personas"
+    [nombre]="p.nombre"
+    [apellido]="p.apellido"
+    [rol]="p.rol"
     (usuarioSelecionado)="onUserSelect($event)"
     ></app-user-profile>
 
-  <app-user-profile nombre="Pablo" apellido="Zamora" rol="operador"></app-user-profile>
+  <button (click)="cambiaNombre()">Cambio de nombre</button>
 
 </main>
 <footer>

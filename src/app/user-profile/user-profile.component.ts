@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 
 export interface User {
   nombre: string;
@@ -11,7 +11,7 @@ export interface User {
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
-export class UserProfileComponent implements OnInit, OnDestroy {
+export class UserProfileComponent implements OnInit, OnDestroy, OnChanges {
   @Input() nombre = '';
   @Input() apellido = '';
   @Input() rol = '';
@@ -25,6 +25,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     console.log('Destruccion ' + this.nombre);
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('Cambios', changes);
   }
 
 
