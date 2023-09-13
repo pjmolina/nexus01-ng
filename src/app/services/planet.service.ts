@@ -14,7 +14,10 @@ export class PlanetService {
 
   getPlanetById(id: number): Observable<Planet> {
     const url = `https://swapi.dev/api/planets/${encodeURIComponent(id)}`;
-    return this.http.get<PlanetResponse>(url).pipe(
+    return this.http.get<PlanetResponse>(url, {
+      headers: {
+      }
+    }).pipe(
       map(pr => convertToPlanet(pr))
     );
   }
