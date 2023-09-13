@@ -12,7 +12,23 @@ export interface User {
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() nombre = '';
+  private _nombre = '';
+
+  @Input()
+  get nombre(): string {
+    return this._nombre;
+  }
+  set nombre(n: string) {
+    if (n !== this.nombre) {
+      this._nombre = n;
+      this.nombreChange.emit(n);
+    }
+  }
+
+  @Output() nombreChange = new EventEmitter<string>();
+
+
+
   @Input() apellido = '';
   @Input() rol = '';
 

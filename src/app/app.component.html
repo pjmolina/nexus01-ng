@@ -7,13 +7,15 @@
   <p>Bienvenido:</p>
 
   <app-user-profile *ngFor="let p of personas"
-    [nombre]="p.nombre"
+    [(nombre)]="p.nombre"
     [apellido]="p.apellido"
     [rol]="p.rol"
     (usuarioSelecionado)="onUserSelect($event)"
     ></app-user-profile>
 
   <button (click)="cambiaNombre()">Cambio de nombre</button>
+
+  <input [(ngModel)]="title">
 
 </main>
 <footer>

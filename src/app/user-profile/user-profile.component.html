@@ -1,5 +1,6 @@
 <div class="user-profile">
-  {{ nombre }} {{ apellido }}
+  <input [(ngModel)]="nombre">
+ {{ apellido }}
   <span *ngIf="rol === 'administrador'; else noAdmin" >ADMIN</span>
   <ng-template #noAdmin >
     <span>({{ rol }})</span>
