@@ -1,4 +1,10 @@
 <div class="user-profile">
-  {{ nombre }} {{ apellido }} ({{ rol}} )
+  {{ nombre }} {{ apellido }}
+  <span *ngIf="rol === 'administrador'; else noAdmin" >ADMIN</span>
+  <ng-template #noAdmin >
+    <span>({{ rol }})</span>
+  </ng-template>
+
   <button (click)="botonPulsado()">Seleccionar</button>
 </div>
+
