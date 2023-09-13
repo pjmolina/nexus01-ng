@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { LoggerService } from '../services/logger.service';
 
 export interface User {
   nombre: string;
@@ -9,7 +10,9 @@ export interface User {
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  styleUrls: ['./user-profile.component.scss'],
+  providers: [
+  ]
 })
 export class UserProfileComponent implements OnInit, OnDestroy, OnChanges {
   private _nombre = '';
@@ -27,23 +30,21 @@ export class UserProfileComponent implements OnInit, OnDestroy, OnChanges {
 
   @Output() nombreChange = new EventEmitter<string>();
 
-
-
   @Input() apellido = '';
   @Input() rol = '';
 
-  constructor() {
-    console.log('Construyendo' + this.nombre);
+  constructor(private logger: LoggerService ) {
+    this.logger.log('Construyendo' + this.nombre);
   }
 
   ngOnInit(): void {
-    console.log('Inicianlizando ' + this.nombre);
+    this.logger.log('Inicianlizando ' + this.nombre);
   }
   ngOnDestroy(): void {
-    console.log('Destruccion ' + this.nombre);
+    this.logger.log('Destruccion ' + this.nombre);
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Cambios', changes);
+    this.logger.log('Cambios' + JSON.stringify(changes));
   }
 
 
@@ -52,7 +53,7 @@ export class UserProfileComponent implements OnInit, OnDestroy, OnChanges {
 
 
   botonPulsado(): void {
-    console.log('Seleccionado: '+ this.nombre );
+    this.logger.log('Seleccionado: '+ this.nombre );
 
     this.usuarioSelecionado.emit({
       nombre: this.nombre,

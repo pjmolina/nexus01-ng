@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoggerService } from './services/logger.service';
 import { User } from './user-profile/user-profile.component';
 
 
@@ -6,7 +7,7 @@ import { User } from './user-profile/user-profile.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'Nexus';
@@ -18,9 +19,11 @@ export class AppComponent {
     { nombre: 'Jose', apellido: 'Zamora', rol: 'administrador' }
   ];
 
+  constructor(private logger: LoggerService) {}
+
 
   onUserSelect(u: User) {
-    console.log('Usuario seleccionado:' + u.nombre);
+    this.logger.log('Usuario seleccionado:' + u.nombre);
   }
 
   cambiaNombre(): void {

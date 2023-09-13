@@ -1,0 +1,19 @@
+<div class="planet">
+  <div *ngIf="planet; else noPlanet">
+    <span>Nombre:</span><span>{{ planet.name }}</span>
+    <br/>
+    <span>Clima:</span><span>{{ planet.climate }}</span>
+    <br/>
+    <span>Gravedad:</span><span>{{ planet.gravity }}</span>
+    <br/>
+    <span>Poblacion:</span><span>{{ planet.population }}</span>
+    <br/>
+    <span>Fecha de ultima edicion:</span><span>{{ planet.edited }}</span>
+    <br/>
+  </div>
+</div>
+
+<ng-template #noPlanet>
+  <p>No hay datos.</p>
+  <div class="error" *ngIf="error"> {{ error }}</div>
+</ng-template>
