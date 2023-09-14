@@ -6,7 +6,13 @@
 <main>
   <p>Bienvenido:</p>
 
-  <app-user-profile *ngFor="let p of personas"
+
+  <div class="filter">
+    <label for="filter">Filtro:</label>
+    <input id="filter" placeholder="type to filter" type="text" [(ngModel)]="searchText">
+  </div>
+
+  <app-user-profile *ngFor="let p of personas | filterByName:searchText"
     [(nombre)]="p.nombre"
     [apellido]="p.apellido"
     [rol]="p.rol"

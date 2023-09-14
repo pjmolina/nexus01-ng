@@ -9,6 +9,7 @@ import { User } from './user-profile/user-profile.component';
 })
 export class AppComponent {
   title = 'Nexus';
+  searchText = '';
   personas: User[] = [
     { nombre: 'Pablo', apellido: 'Zamora', rol: 'administrador' },
     { nombre: 'Maria', apellido: 'Zamora', rol: 'operador' },

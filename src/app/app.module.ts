@@ -8,6 +8,7 @@ import { PlanetDetailComponent } from './planets/planet-detail/planet-detail.com
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ResaltaDirective } from './directives/resalta.directive';
 import { CurrencyPipe } from './pipes/currency.pipe';
+import { FilterByNamePipe } from './pipes/filter-by-name.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CurrencyPipe } from './pipes/currency.pipe';
     PlanetDetailComponent,
     ResaltaDirective,
     CurrencyPipe,
+    FilterByNamePipe,
   ],
   imports: [
     BrowserModule,
