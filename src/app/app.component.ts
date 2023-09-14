@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { LoggerService } from './services/logger.service';
 import { User } from './user-profile/user-profile.component';
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

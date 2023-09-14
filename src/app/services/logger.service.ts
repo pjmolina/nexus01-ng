@@ -17,12 +17,15 @@ export class LoggerService {
 @Injectable()
 export class NullLoggerService {
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   log(msg: string) {
     // nada
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   warn(msg: string) {
     // nada
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   error(msg: string) {
     // nada
   }

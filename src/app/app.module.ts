@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { PlanetDetailComponent } from './planets/planet-detail/planet-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ResaltaDirective } from './directives/resalta.directive';
+import { CurrencyPipe } from './pipes/currency.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ResaltaDirective } from './directives/resalta.directive';
     UserProfileComponent,
     PlanetDetailComponent,
     ResaltaDirective,
+    CurrencyPipe,
   ],
   imports: [
     BrowserModule,
