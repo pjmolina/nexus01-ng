@@ -1,0 +1,11 @@
+<div class="planet-list" *ngIf="planets; else loading">
+  <h1>Listado de planetas</h1>
+  <div class="planet" *ngFor="let p of planets">
+    <div>{{ p.name }}</div>
+    <div>Poplacion: {{ p.population }}</div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <img src="/assets/img/spinner.gif" alt="spinner"/>
+</ng-template>

@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Planet } from 'src/app/domain/planet';
 import { LoggerService } from 'src/app/services/logger.service';
@@ -14,26 +15,41 @@ export class PlanetDetailComponent implements OnInit, OnDestroy {
   error = '';
   sub?: Subscription;
 
-  constructor(private log: LoggerService, private planetService: PlanetService) {
+  constructor(
+    private log: LoggerService,
+    private planetService: PlanetService,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-      if (this.id) {
-        this.sub = this.planetService.getPlanetById(this.id).subscribe({
-          next: (planet) => {
-            this.planet = planet;
-            this.error = '';
-          },
-          error: (err) => {
-            this.error = err.message;
-            this.planet = undefined;
-          },
-          complete: () => {
-            this.log.log('Observable completo');
-          }
-        });
-      }
+    const sub = this.route.paramMap.subscribe(paramMap => {
+      const id = paramMap.get('id');
+      this.id = id ? +id : 0;
+      this.load();
+    })
+
+    this.load();
   }
+
+  load(): void {
+    if (this.id) {
+      this.sub = this.planetService.getPlanetById(this.id).subscribe({
+        next: (planet) => {
+          this.planet = planet;
+          this.error = '';
+        },
+        error: (err) => {
+          this.error = err.message;
+          this.planet = undefined;
+        },
+        complete: () => {
+          this.log.log('Observable completo');
+        }
+      });
+    }
+  }
+
+
   ngOnDestroy(): void {
       if (this.sub) {
         this.sub.unsubscribe();

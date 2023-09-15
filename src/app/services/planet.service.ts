@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { Page } from '../domain/paginated-response';
 import { Planet, PlanetResponse } from '../domain/planet';
 
 @Injectable({
@@ -21,6 +22,16 @@ export class PlanetService {
       map(pr => convertToPlanet(pr))
     );
   }
+  getPlanets(): Observable<Planet[]> {
+    const url = `https://swapi.dev/api/planets/`;
+    return this.http.get<Page<PlanetResponse>>(url, {
+      headers: {
+      }
+    }).pipe(
+      map(pr => pr.results.map(it => convertToPlanet(it)))
+    );
+  }
+
 }
 
 

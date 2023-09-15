@@ -1,0 +1,9 @@
+.planet {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+.planet div {
+  margin-right: 1rem;
+}

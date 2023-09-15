@@ -2,9 +2,22 @@
   <div>
     <h1 appResalta class="titular">{{ title }}</h1>
   </div>
+  <nav>
+    <a [routerLink]="['/home']">Inicio</a> |
+    <a [routerLink]="['/about']">Acerca de </a> |
+    <a [routerLink]="['/planets']">Listado de PLanetas</a> |
+    <a [routerLink]="['/planet/1']">PLaneta 1</a> |
+    <a [routerLink]="['/planet/2']">PLaneta 2</a> |
+    <a [routerLink]="['/store']">Almacen</a> |
+    <a [routerLink]="['/store/a']">A</a> |
+    <a [routerLink]="['/store/b']">B</a> |
+    <a [routerLink]="['/zz']">No existe ZZZ</a>
+  </nav>
 </header>
 <main>
-  <p>Bienvenido:</p>
+  <router-outlet></router-outlet>
+
+   <!-- <p>Bienvenido:</p>
 
 
   <div class="filter">
@@ -27,7 +40,7 @@
 
   <div> {{ 100000 | currency:'eur' }}</div>
   <div> {{ 100000 | currency:'USD' }}</div>
-  <div> {{ 100000 | currency }}</div>
+  <div> {{ 100000 | currency }}</div> -->
 
 </main>
 <footer>
